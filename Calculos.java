@@ -1,7 +1,4 @@
-package br.com.jt.jaime;
-
 public class Calculos {
-
 	public static void main(String[] args) {
 		
 		int aluno1 = 16, aluno2 = 22, aluno3 = 19, aluno4 = 15; 

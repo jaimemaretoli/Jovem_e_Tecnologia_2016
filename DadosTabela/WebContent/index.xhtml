@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Dados em tabelas</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h:panelGrid columns="3">
+				<p:outputLabel value="Nome: "/>
+				<p:inputText />
+				
+				<br />
+				
+				<p:outputLabel value="Endereço: "/>
+				<p:inputText />
+				
+				<br />
+				
+				<p:outputLabel value="Número: "/>
+				<p:inputText />
+				
+				<br />
+				
+				<p:outputLabel value="Telefone: "/>
+				<p:inputText />
+				
+				<br />
+				
+				<p:outputLabel value="Cidade: "/>
+				<p:inputText />
+			</h:panelGrid>
+			
+			<p:commandButton value="Enviar para tabela" update="tabela"/>
+			<p:commandButton value="Atualizar tabela" type="submit" update="tabela"/>
+			<p:commandButton value="Limpar campos" type="reset"/>
+			
+			<hr />
+			
+			<h:panelGrid>
+				<p:dataTable id="tabela" value="#{BeanMB.dadosTabela}" 
+							 var="d" rows="10" emptyMessage="Sem dados.">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{dados.nome}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Endereço" />
+						</f:facet>
+						<h:outputText value="#{dados.endereco}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Número" />
+						</f:facet>
+						<h:outputText value="#{dados.numero}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone" />
+						</f:facet>
+						<h:outputText value="#{dados.telefone}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Cidade" />
+						</f:facet>
+						<h:outputText value="#{dados.cidade}"/>
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</html>

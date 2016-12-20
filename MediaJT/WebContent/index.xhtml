@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Média</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h:outputText value="SISTEMA DE MÉDIA ENTRE 5 PESSOAS"/>
+			
+			<br />
+			<br />
+			
+			<h:outputText value="Idade 1: "/>
+			<h:inputText value="#{Bean.idade1}"/>
+			
+			<br />
+			
+			<h:outputText value="Idade 2: "/>
+			<h:inputText value="#{Bean.idade2}"/>
+			
+			<br />
+			
+			<h:outputText value="Idade 3: "/>
+			<h:inputText value="#{Bean.idade3}"/>
+			
+			<br />
+			
+			<h:outputText value="Idade 4: "/>
+			<h:inputText value="#{Bean.idade4}"/>
+			
+			<br />
+			
+			<h:outputText value="Idade 5: "/>
+			<h:inputText value="#{Bean.idade5}"/>
+			
+			<br />
+		
+			<h:commandButton value="Gerar média!" actionListener="#{Bean.calculoMedia()}" type="submit"/>
+			<h:outputText value=" Resultado da Média: #{Bean.media}"/>
+		</h:form>
+	</h:body>
+</html>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>AniMania</title>
+		
+		<style type="text/css">
+			#borda {
+				height: 200%;
+				min-height: 100%;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+			}
+		</style>
+		
+	</h:head>
+	<h:body style="text-align: center; 
+			background: url('fundo.jpg');
+			background-repeat: no-repeat;">
+		
+		<input type="image" src="FINAL.png" />
+		<p:growl id="msgs"/>
+		
+		<!-- LOGIN -->
+		<h:form id="formall">
+			<p:panel rendered="#{Bean.display1}" id="login" class="painelc"
+					 style="background: rgba(0,0,0,0); border: 0;">
+				<div class="ui-fluid" >
+					<div id="borda">
+						<div style="padding: 40px; width: 500px; height: 100% ;
+							 color: rgba(0, 0, 0, .3); 
+							 background: url('https://image.freepik.com/free-vector/grunge-orange-background_1048-206.jpg');">
+							
+							<p:panelGrid columnClasses="ui-grid-col-2,ui-grid-col-12"
+										 layout="grid" columns="2" 
+										 styleClass="ui-panelgrid-blank">
+	
+								<p:outputLabel value="Nome:"
+											   style="color: white;" />
+								<p:inputText value="#{Bean.nome}"
+											 style="width: 390px;" />
+	
+								<p:outputLabel value="Equipe:"
+											   style="color: white;" />
+								<p:inputText value="#{Bean.equipe}"
+											 style="width: 390px;" />
+	
+								<p:outputLabel for="console" value="Sexo:"
+											   style="color: white;" />
+								<p:selectOneMenu id="console"
+												 value="#{Bean.sexo}"
+												 converter="SexoConverter">
+									<f:selectItem itemLabel="Selecione"
+												  itemValue="#{null}"
+												  noSelectionOption="true" />
+	
+									<f:selectItems value="#{Bean.sexos}"
+												   var="sexo"
+												   itemLabel="#{sexo.genero}"
+												   itemValue="#{sexo}" />
+								</p:selectOneMenu>
+	
+								<br />
+	
+								<p:commandButton value="Jogar" type="submit"
+												 action="#{Bean.comecaGame()}"
+												 update="formall, prgs, msgs"
+												 style="width:  500px; 
+													 	height: 50px;
+													 	margin-right: 20px;" />
+	
+								<p:panelGrid columns="2" cellpadding="5" 
+											 style="margin: 0 auto;">
+									<p:commandButton value="?" type="button"
+													 onclick="PF('dlg2').show();"
+													 style="width: 215px; 
+														 	height: 50px;
+														 	margin-left: 30px;" />
+									<p:commandButton value="Limpar campos"
+													 type="reset"
+													 style="width:  215px; 
+														 	height: 50px; 
+														 	margin-left: 10px;" />
+								</p:panelGrid>
+							</p:panelGrid>
+						</div>
+					</div>
+	
+					<p:dialog header="Como Jogar" widgetVar="dlg2" modal="true"
+						height="100">
+						<h:outputText value="Para começar a jogar você deve 
+											 identificar-se, nos dizer sua idade
+											 e seu Sexo; Este jogo tentará 
+											 adivinhar em que animal você está 
+											 pensando com apenas 20 perguntas, 
+											 basta você responder corretamente 
+											 nossas perguntas. Um bom jogo para 
+											 você, divirta-se! Obs.:Este jogo 
+											 se trata de um quiz de animais(mais 
+											 comuns) Selvagens e domésticos
+											 portanto não há Homem(que é um 
+											 animal racional)." />
+					</p:dialog>
+				</div>
+			</p:panel>
+		</h:form>
+			
+		<!-- PERGUNTAS -->
+		<h:form id="prgs">
+			<p:panel rendered="#{Bean.display2}" id="perguntas" class="painelc"
+					 style=" background: rgba(0,0,0,0); border: 0; text-align: center">
+	
+				<div class="ui-fluid">
+					<div id="borda">
+						<div style="padding: 40px; width: 500px; height: 100% ;
+							 color: rgba(0, 0, 0, .3);
+							 background: url('https://image.freepik.com/free-vector/grunge-orange-background_1048-206.jpg')">
+							<p:outputLabel id="pergunta"
+											   value="#{Bean.pergunta1}" style="color: white; font-family: AR DENALEY ;font-size: 35px; text-align: center"/>
+							
+							<p:panelGrid columnClasses="ui-grid-col-2,ui-grid-col-10"
+										 layout="grid" columns="2" 
+										 styleClass="ui-panelgrid-blank" >
+	
+								
+								
+								
+									<br/>
+									<p:outputLabel for="tipo-resposta" />
+									<p:selectOneRadio value="#{Bean.opcao}"
+													  id="tipo-resposta">
+										
+										<f:selectItem itemLabel="Sim"
+													  itemValue="1" />
+	
+										<f:selectItem itemLabel="Não"
+													  itemValue="2" />
+	
+										<f:selectItem itemLabel="Talvez"
+													  itemValue="3" />
+									
+									</p:selectOneRadio>
+								
+								
+	
+								<br />
+	
+								<p:commandButton style="width: 200px;
+												 		height: 50px; 
+												 		margin: 0 auto;"
+												 value="Confirmar"
+												 action="#{Bean.pergunta()}"
+												 update="final, pergunta, prgs" 
+												 type="submit" />
+	
+								<br />
+								<br />
+	
+								<p:button style="width: 200px; height: 50px;margin-right: 0 auto;"
+										  value="voltar ao inicio" 
+										  href="index.jsf" />
+	
+								<br />
+								<br />
+	
+								<h:panelGrid columns="1" cellpadding="1">
+									<p:commandButton value="?" type="button"
+													 onclick="PF('dlg2').show();"
+													 style="width: 200px; 
+														 	height: 50px; 
+														 	margin-left: 0 auto ;" />
+								</h:panelGrid>
+								
+								<p:dialog header="Ajuda!" widgetVar="dlg2" 
+										 modal="true"
+										 height="100">
+									<h:outputText value="Nesta tela conterá as 
+														 perguntas onde você 
+														 deverá responde-las 
+														 corretamente!" />
+								</p:dialog>
+							</p:panelGrid>
+						</div>
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+	
+		<!-- RESPOSTAS -->
+		<h:form id="final">
+			<p:panel rendered="#{Bean.display3}" id="final" class="painelc"
+					 style=" background: rgba(0,0,0,0); border: 0;">
+				<div class="ui-fluid">
+					<div id="borda">
+						<div style="padding: 40px; color: rgba(0, 0, 0, .3);
+							 background: url('https://image.freepik.com/free-vector/grunge-orange-background_1048-206.jpg')">
+									<h:outputText style="color: Black;
+													 font-size: 30px;"
+													 value=" Seu animal é: #{Bean.objeto}" />
+													 
+													 
+							<p:panelGrid columnClasses="ui-grid-col-2,ui-grid-col-12"
+										 columns="2" layout="grid"
+										 styleClass="ui-panelgrid-blank">
+	<br/>
+								<h:panelGrid columns="1" cellpadding="5"
+											 style="margin: 0 auto; 
+											 button-size: 50px;">
+									
+									<p:button style="width: 200px; height: 50px"
+											  value="voltar ao inicio"
+											  type="button" href="index.jsf" />
+								</h:panelGrid>
+							</p:panelGrid>
+						</div>
+					</div>
+				</div>
+			</p:panel>
+		</h:form>
+	</h:body>
+</html>

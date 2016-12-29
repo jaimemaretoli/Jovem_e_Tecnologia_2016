@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+@import
+url("style.css")
+</style>
+	<title>20 Q</title>
+	<h:messages globalOnly="true" />
+
+</h:head>
+<h:body>
+	<p:growl id="msgs" showDetail="true" />
+	<p:dialog header="Como jogar !" widgetVar="ajuda" width="40%">
+		<h:outputText
+			value="Para Jogar o 20 Q das profissões você prescisa pensar em alguma profissão, e então responder as questões de acordo com a profissão que você está pensando." />
+		<br />
+		<h:outputText style="color: #1d1e1e"
+			value="(você pode deixar esta guia aberta enquanto joga !)" />
+	</p:dialog>
+	<p:dialog header="Como jogar !" widgetVar="ajuda2" width="40%">
+		<h:outputText
+			value="Nesta tela você deve marcar uma das opções de acordo com a profissão em mente e então clicar em confirma !" />
+	</p:dialog>
+	<p:dialog header="Como jogar !" widgetVar="ajuda3" width="40%">
+		<h:outputText value="Aqui você os resultados dos sistema !" />
+	</p:dialog>
+
+	<h:form id="formall">
+		<div id="inicial" class="ui-fluid" style="margin-top: 2%;">
+			<p:panel class="painelc" rendered="#{bean.display1}">
+				<div
+					style="background: url('imagens/banner.gif') no-repeat center; background-size: 100%; filter: blur(0, 5px); height: 100px; text-align: center; padding-top: 20%; color: #444444">
+				</div>
+				<p:panelGrid columns="2" cellpadding="1"
+					columnClasses="ui-grid-col-2, ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<p:outputLabel for="nome" value="Nome" />
+					<p:inputText id="nome" value="#{bean.nome}" />
+				</p:panelGrid>
+				<p:panelGrid style="" columns="4"
+					columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<p:outputLabel for="equipe" value="Equipe " />
+					<p:inputNumber id="equipe" value="6" readonly="true"
+						decimalPlaces="0" />
+					<p:outputLabel for="sexo" value="Sexo" />
+					<p:selectOneMenu id="sexo" value="#{bean.sexo}"
+						converter="SexoConverter" style="min-width: 0px !important;">
+						<f:selectItem itemLabel="Selecione o sexo" itemValue="#{null}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{bean.sexos}" var="sexo"
+							itemLabel="#{sexo.genero}" itemValue="#{sexo}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:panelGrid style="margin-left: 5%;" columns="3" cellpadding="35"
+					columnClasses="ui-grid-col-2, ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<p:commandButton class="ajuda" value="?"
+						onclick="PF('ajuda').show();" />
+					<p:commandButton class="jogar" value="Jogar"
+						action="#{bean.comecarGame()}" process="@form"
+						update="formall,msgs, frmperguntas" />
+					<p:commandButton class="reseta" value="Resetar" ajax="false"
+						action="#{bean.refresh()}" />
+				</p:panelGrid>
+			</p:panel>
+		</div>
+	</h:form>
+
+	<h:form id="frmperguntas">
+		<div id="perguntas" style="margin-top: 5%">
+			<p:panel class="painelc" header="ProIssues - Perguntas"
+				rendered="#{bean.display2}">
+				<div style="margin-top: 10%">
+					<p:outputLabel id="pergunta" value="#{bean.pergunta1}"
+						style="font-size: 130%;" />
+
+					<p:selectOneRadio
+						style="margin: 0 auto;text-align: center; margin-top: 5%;"
+						id="customRadio" value="#{bean.opcao}" layout="responsive"
+						columns="1">
+						<f:selectItem itemLabel="Sim" itemValue="1" />
+						<f:selectItem itemLabel="Talvez" itemValue="3" />
+						<f:selectItem itemLabel="Não" itemValue="2" />
+					</p:selectOneRadio>
+
+					<p:commandButton value="CONFIRMA" action="#{bean.responde()}"
+						ajax="true" process="@form" update="@form,pergunta"
+						style="margin-top: 5%;" />
+				</div>
+				<p:panelGrid columns="3" cellpadding="1"
+					columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<div
+						style="width: 150px; height: 150px; background: url('imagens/logo.gif') no-repeat center; background-size: 100%">
+					</div>
+
+					<p:commandButton class="ajuda2" value="?" style=""
+						onclick="PF('ajuda2').show();" />
+
+				</p:panelGrid>
+			</p:panel>
+		</div>
+
+
+
+
+		<div id="final" style="margin-top: 5%">
+			<p:panel class="painelc" header="ProIssues - Resultados"
+				rendered="#{bean.display3}">
+				<p:outputLabel id="frasefinal" style="font-size: 150%;"
+					value="A sua profissão é :" />
+				<div id="img"
+					style="background: url('#{bean.imagem}') no-repeat; margin: 0 auto; margin-top: 5%;">
+					<p:outputLabel style="background: #6495ED; border-radius: 20px;"
+						value="#{bean.resultado}" />
+				</div>
+				<div style="height: 150px">
+					<div
+						style="overflow-y: auto; white-space: nowrap; box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.8); width: 50%; height: 100%; background: rgba(0, 50, 199, 0.81); margin-top: 10%; margin-left: 40%;">
+
+						<h:dataTable id="tablePergs" value="#{bean.listaper_e_resps}"
+							var="p">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Pergunta" />
+								</f:facet>
+								<h:outputText value="#{p.pergunta}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Resposta" />
+								</f:facet>
+								<h:outputText value="#{p.resposta}" />
+							</h:column>
+						</h:dataTable>
+
+					</div>
+				</div>
+				<p:panelGrid class="finalgrid" columns="3" cellpadding="5"
+					columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<div class="finallogo"></div>
+					<p:commandButton value="Resetar" ajax="false"
+						action="#{bean.refresh()}" />
+					<p:commandButton value="?" onclick="PF('ajuda3').show();" />
+				</p:panelGrid>
+			</p:panel>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

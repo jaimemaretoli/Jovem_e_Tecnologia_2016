@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>fFruit</title>
+	</h:head>
+	<h:body style="font-family: sans-serif; color:#1c94c4; background-image:url('fundo.jpg'); !important; text-align: center;">
+	 	<style type="text/css">
+		#joguin {
+  height: 100%;
+  min-height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+	 </style>
+	 <input type="image" align="center" height="120" width="240" src="fruitlogo.png"/>
+	
+	 <div id="joguin">
+	 <div style=" padding: 40px; border: 1px solid rgba(0, 0, 0, .3); background-image:url('fundo2.jpg');">
+	 <h:form>
+	 
+	 	<font size="6" face="sans-serif">Pergunta</font>
+		<br /><br /><br />
+		<h:panelGrid columns="1">
+		<p:selectOneRadio id="alternativas" value="">
+            <f:selectItem itemLabel="Sim" itemValue="Sim" />
+            <f:selectItem itemLabel="Não" itemValue="Não" />
+            <f:selectItem itemLabel="Talvez/Não sei" itemValue="Talvez/Não sei" />
+        </p:selectOneRadio>
+		<p:commandButton value="Prosseguir" id="continue"  ajax="false" />
+		</h:panelGrid>
+	 </h:form>
+		</div>
+		</div>
+	</h:body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>fFruit</title>
+	</h:head>
+	<h:body style="font-family: sans-serif; color:#1c94c4; background-image:url('fundo.jpg'); !important; text-align: center;">
+			<style type="text/css">
+		#final {
+  height: 100%;
+  min-height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  
+}
+
+	 </style>
+			<input type="image" align="center" height="120" width="240" src="fruitlogo.png"/>
+	
+	<div id="final">
+	 <div style=" padding: 40px; border: 1px solid rgba(0, 0, 0, .3); background-image:url('fundo2.jpg');">
+	<p align="center"> <font size="5" face="sans-serif">
+	Parabéns <h:outputLabel value="[Nome]" id="name"/>!!! </font> </p>
+	 <br/><br/>
+	 	<p align="center"> <font size="4" face="sans-serif">
+			Acho que você pensou em: <h:outputLabel value="Resultado" id="result"/> </font> </p>
+		<br/>
+		<h:form align="center">
+	
+			<p:commandButton value="Certo" id="certo"  ajax="false"/> 
+			<p:commandButton value="Errado" id="errado" ajax="false" />
+			<br/><br/><br/>
+			<p:commandButton id="tudo" value="Suas perguntas e respostas" type="button" />
+    <p:overlayPanel id="listaPanel" for="tudo" hideEffect="fade" dynamic="true" style="width:600px">
+        <p:dataTable var="lista" value="" rows="2" paginator="true">
+            <p:column headerText="Perguntas">
+                <h:outputText value="" />
+            </p:column>
+ 
+            <p:column headerText="Respostas">
+                <h:outputText value="" />
+            </p:column>
+        </p:dataTable>
+    </p:overlayPanel>
+		</h:form>
+	</div>
+	</div>
+	</h:body>
+</html>

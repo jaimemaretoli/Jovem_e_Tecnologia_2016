@@ -1,0 +1,169 @@
+@font-face {
+		font-family: stillo-fonte;
+		src: url("fontes/BebasNeue.otf") format("opentype");
+	}
+html{
+	
+	background: url("imagens/fundoGG.gif") repeat ;
+	background-size: 100%;	
+	font-family: sans-serif;
+	font-family: stillo-fonte;
+}
+
+.painelc{
+	margin: 0 auto;
+	width:60%;
+	background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+	background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+	background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+	background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+	text-align: center;
+	
+	
+}
+	#frasefinal{
+		margin: 0 auto;
+	}
+	#middlebots{
+		margin-left: 51%;
+	 	
+	}
+	#formall:sexo{
+		min-width: 0px !important;
+	
+	}
+
+	.finallogo{
+		width: 150px;
+		height: 150px;
+		background: url('imagens/logo.gif') no-repeat center;
+		background-size: 200px;
+		margin-top: -150%;
+	
+	}
+	.finalgrid{
+		margin-left: 6%;
+	
+	}
+	
+	.reseta{
+			heigth: 50%;
+			margin-left: 2%;
+			font-size:100%;
+			text-align: center;
+			margin-top: 45%;
+	}
+	.jogar{
+			font-family: stillo-fonte;
+			width: 300px;
+			height: 150px;
+			font-size: 100%;
+			text-align: center;
+			margin-left: 0%;
+	}
+	.ajuda{
+			heigth: 50%;
+			margin-top: 95%;
+			text-align: center;  
+	}
+	.ajuda2{
+		margin-top:10%;
+		margin-left:60%;
+		font-size:100%;
+		 text-align: center;
+	}
+
+	.ui-selectonemenu{
+	min-width: 0px !important
+	}
+
+#img{
+	
+	 width:200px;
+	 height:100%;
+	 background-size: 100% !important;
+	 border-radius: 10px;
+	 padding-top: 20%;
+	 margin-botton: 5%;
+	
+}
+@media only screen and (max-width: 793px){
+	
+	
+	}
+@media only screen and (max-width:640px){
+	
+	.reseta{
+	
+			width: 90%;
+			height: 30%;
+			margin-left: 2%;
+			font-size:120%;
+			text-align: center;
+			margin-top: 0%;
+	}
+	.jogar{
+			font-family: stillo-fonte;
+			width: 300px;
+			height: 150px;
+			font-size: 300%;
+			text-align: center;
+			margin-left: 0%;
+	}
+	.ajuda{
+			width: 100%;
+			height: 50%;
+			margin-left: 2%;
+			margin-top: 0%;
+			font-size:120%;
+			text-align: center;  
+	}
+	html{
+	
+	background: -moz-radial-gradient(center, ellipse cover, rgba(179,0,255,1) 0%, rgba(2,165,194,1) 50%, rgba(1,0,66,1) 100%); /* ff3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(179,0,255,1)), color-stop(50%, rgba(2,165,194,1)), color-stop(100%, rgba(1,0,66,1))); /* safari4+,chrome */
+	background:-webkit-radial-gradient(center, ellipse cover, rgba(179,0,255,1) 0%, rgba(2,165,194,1) 50%, rgba(1,0,66,1) 100%); /* safari5.1+,chrome10+ */
+	background: -o-radial-gradient(center, ellipse cover, rgba(179,0,255,1) 0%, rgba(2,165,194,1) 50%, rgba(1,0,66,1) 100%); /* opera 11.10+ */
+	background: -ms-radial-gradient(center, ellipse cover, rgba(179,0,255,1) 0%, rgba(2,165,194,1) 50%, rgba(1,0,66,1) 100%); /* ie10+ */
+	background:radial-gradient(ellipse at center, rgba(179,0,255,1) 0%, rgba(2,165,194,1) 50%, rgba(1,0,66,1) 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B300FF', endColorstr='#010042',GradientType=1 ); /* ie6-9 */
+	}
+	.ajuda2{
+		
+		margin-left:-25%;
+		font-size:120%;
+		 text-align: center;
+		}
+	#frasefinal{
+		font-size: 500%;
+		margin: 0 auto;
+	}
+	#img{
+	
+	 width:70%;
+	 background-size: 100% !important;
+	 border-radius: 10px;
+	 padding-top: 55%;
+	 margin-left: 20%;
+	 margin-top: 5%;
+	 height: inherit;
+	}
+	#middlebots{
+		margin-left: 0%;
+		margin-top: -500%
+	 	
+	}
+	.finallogo{
+		width: 150px;
+		height: 150px;
+		background: url('imagens/logo.gif') no-repeat center;
+		background-size: 200px;
+		margin-top: 0;
+	}
+	.finalgrid{
+		margin-left: -20%;
+	
+	}
+	}
+	

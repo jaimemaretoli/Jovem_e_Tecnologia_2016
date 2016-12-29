@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>fFruit</title>
+</h:head>
+<h:body
+	style="font-family: Trebuchet MS; color:#1c94c4; font-weight: bold; text-align: center !important; background-image:url('fundo.jpg');">
+
+	<input type="image" src="fruitlogo.png" />
+	<style type="text/css">
+#inicio {
+	height: 100%;
+	min-height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+#joguin {
+	height: 100%;
+	min-height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+#final {
+	height: 100%;
+	min-height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+</style>
+	<h:form id="all">
+		<p:panel class="painelc" rendered="#{Bean.display1}" id="first"
+			style="width: 300px; background: rgba(0, 0, 0, 0); border: 0 !important; margin: 0 auto; justify-content: center">
+			<div id="inicio">
+				<div
+					style="padding: 40px; border: 1px solid rgba(0, 0, 0, .3); background-image: url('fundo2.jpg');">
+
+					<h:panelGrid columns="1">
+						<h:outputLabel id="grupo" value="Equipe" style="font-size: 130%;" />
+						<p:inputText value="#{Bean.equipe}" />
+						<br />
+						<h:outputLabel for="nome" value="Nome:" style="font-size: 110%;" />
+						<p:inputText id="nome" value="#{Bean.nome}" />
+						<br />
+						<h:outputLabel for="sexo" value="Sexo:" style="font-size: 110%;" />
+						<p:selectOneMenu id="sexo" value="#{Bean.sexo}"
+							converter="SexoConverter">
+							<f:selectItem itemLabel="Selecione o Sexo" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{Bean.sexos}" var="sexo"
+								itemLabel="#{sexo.genero}" itemValue="#{sexo}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+					<p:growl id="msgs" showDetail="true" />
+					<p:commandButton class="jogar" type="submit" value="Jogar"
+						action="#{Bean.comecarGame}" update="all" />
+					<p:commandButton class="ajuda" type="help" value="Ajuda"
+						onclick="PF('dlg2').show();" />
+					<p:dialog header="Ajuda" widgetVar="dlg2" modal="true">
+						<h:outputText
+							value="Para começar o jogo, digite o número da equipe, cuja qual é a 8, digite também seu nome, selecione o sexo e pressione jogar. Na segunda tela o jogo funciona como um questionário, você pensa em alguma fruta(não sendo muito exótica) e você responde com Sim, Não, ou Não Sei/Talvez as perguntas relacionadas a sua fruta, e o jogo tentará adivinhar a fruta que você está pensando." />
+					</p:dialog>
+					<p:commandButton type="reset" class="reseta" value="Limpar" />
+
+				</div>
+			</div>
+		</p:panel>
+		<p:panel class="painelc" rendered="#{Bean.display2}" id="second"
+			style="width: 330px; background: rgba(0, 0, 0, 0); border: 0 !important; margin: 0 auto; justify-content: center">
+			<div id="joguin">
+				<div
+					style="padding: 40px; border: 1px solid rgba(0, 0, 0, .3); background-image: url('fundo2.jpg');">
+
+
+					<p:outputLabel id="pergunt" value="#{Bean.pergunta1}" />
+					<br /> <br /> <br />
+					<h:panelGrid columns="1">
+						<p:selectOneRadio id="alternativas" value="#{Bean.opcao}">
+							<f:selectItem itemLabel="Sim" itemValue="1" />
+							<f:selectItem itemLabel="Não" itemValue="2" />
+							<f:selectItem itemLabel="Talvez/Não sei" itemValue="3" />
+						</p:selectOneRadio>
+						<p:commandButton value="Prosseguir"
+							action="#{Bean.metodoProsseguir()}" update="all" />
+					</h:panelGrid>
+				</div>
+			</div>
+		</p:panel>
+		<p:panel class="painelc" rendered="#{Bean.display3}" id="third"
+			style="width: 320px; background: rgba(0, 0, 0, 0); border: 0 !important; margin: 0 auto; justify-content: center">
+			<div id="final">
+				<div
+					style="padding: 40px; border: 1px solid rgba(0, 0, 0, .3); background-image: url('fundo2.jpg');">
+					<p align="center">
+						Parabéns
+						<h:outputLabel id="name" value="#{Bean.nome}" />
+						!!!
+					</p>
+					<br /> <br />
+					<p align="center">
+						<img src="#{Bean.imagem}" /> <font size="4" face="sans-serif">
+							Acho que você pensou em: <h:outputLabel value="#{Bean.objeto}"
+								id="result" />
+						</font>
+					</p>
+					<br />
+
+					<p:commandButton value="Jogar Novamente" ajax="false"
+						action="#{Bean.refresh}" />
+
+				</div>
+			</div>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Animais</name>
+	<comment></comment>
+	<projects>
+		<project>jstl-1.2</project>
+		<project>jsf-impl-2.2.9</project>
+		<project>axis</project>
+		<project>dark-hive-1.0.10</project>
+		<project>jsf-api-2.2.9</project>
+		<project>commons-logging</project>
+		<project>wsdl4j</project>
+		<project>commons-discovery-0.2</project>
+		<project>primefaces-6.0</project>
+		<project>jaxrpc</project>
+		<project>saaj</project>
+		<project>cdi-api-2.0-EDR2</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
+		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+	</natures>
+</projectDescription>
